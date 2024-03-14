@@ -336,6 +336,44 @@ def vega(S, K, T, r, sigma):
     assert vega != 0, "vega is zero here."
     return vega
 
+def realised_vol(ticker, start, end, interval):
+    """ 
+    Calculates Realised/Historical Volatility of Assets and prints it in a table.
+                    
+            Parameters:
+                    ticker (string) : List of Stock tickers.
+                    start (datetime) :  Start date of stock data to be extracted.
+                    end (datetime) :  End date of stock data to be extracted.
+                    interval (string) : Interval of stock data to be extracted (“1d”, “1wk”, “1mo”).
+
+            Returns:
+                    vol_interval (double) : 1D Numpy array of either daily, weekly or monthly 
+                                            Volatility for assets depending on parameter interval.
+                    vol (double) : 1D Numpy array of Annualized Volatility of Assets.
+    """
+    if interval == '1d':
+        returns_data = read_return_history(ticker, start, end, interval = interval)[0]
+        vol_interval = np.std(returns_data, axis = 0)*100 
+        vol = vol_interval * np.sqrt(252)
+    elif interval == '1wk':
+        returns_data = read_return_history(ticker, start, end, interval = interval)[0]
+        vol_interval = np.std(returns_data, axis = 0)*100 
+        vol = vol_interval * np.sqrt(52)
+    else:
+        returns_data = read_return_history(ticker, start, end, interval = interval)[0]
+        vol_interval = np.std(returns_data, axis = 0)*100 
+        vol = vol_interval * np.sqrt(12)
+    
+    # Displaying Data in a table.
+    data = {
+    'Ticker': ticker,
+    'Volatility': vol_interval,
+    'Volatility Annualized': vol}
+    df = pd.DataFrame(data)
+    print(df.to_string(index=False))
+    
+    return vol_interval,vol
+
 def implied_vol(r, S, K, T, market_price, type = 'call', tol=0.001, method = 'Newton-Raphson'):
     '''
     Compute the implied volatility of a European Option.
@@ -492,3 +530,53 @@ def black_scholes_put_delta(S,t,K,T,r,sigma):
     """Computes Delta of European Put Option."""
     d1, d2 = compute_d1_and_d2(S,t,K,T,r,sigma)
     return N(d1)-1
+
+def black_scholes_call_gamma(S, t, K, T, r):
+    "Calculate gamma of a option"
+    tau = T-t
+    d1 = (np.log(S/K) + (r + sigma**2/2)*tau)/(sigma*np.sqrt(tau))
+    d2 = d1 - sigma*np.sqrt(tau)
+    gamma = norm.pdf(d1, 0, 1)/(S*sigma*np.sqrt(tau))
+    return gamma
+
+def black_scholes_call_vega(S, t, K, T, r):
+    "Calculate vega of a option"
+    tau = T-t
+    d1 = (np.log(S/K) + (r + sigma**2/2)*tau)/(sigma*np.sqrt(tau))
+    d2 = d1 - sigma*np.sqrt(tau)
+    vega = 0.01 *S*norm.pdf(d1, 0, 1)*np.sqrt(tau)  # 1% change in sigma.
+    return vega
+
+def black_scholes_call_theta(S, t, K, T, r):
+    "Calculate theta of a call option"
+    tau = T-t
+    d1 = (np.log(S/K) + (r + sigma**2/2)*tau)/(sigma*np.sqrt(tau))
+    d2 = d1 - sigma*np.sqrt(tau)
+    theta = -S*norm.pdf(d1, 0, 1)*sigma/(2*np.sqrt(tau)) - r*K*np.exp(-r*tau)*norm.cdf(d2, 0, 1)
+    theta = theta/365    # time decay per day.
+    return theta
+
+def black_scholes_put_theta(S, t, K, T, r):
+    "Calculate theta of a put option"
+    tau = T-t
+    d1 = (np.log(S/K) + (r + sigma**2/2)*tau)/(sigma*np.sqrt(tau))
+    d2 = d1 - sigma*np.sqrt(tau)
+    theta = -S*norm.pdf(d1, 0, 1)*sigma/(2*np.sqrt(tau)) + r*K*np.exp(-r*tau)*norm.cdf(-d2, 0, 1)
+    theta = theta/365
+    return theta
+
+def black_scholes_call_rho(S, t, K, T, r):
+    "Calculate rho of a call option"
+    tau = T-t
+    d1 = (np.log(S/K) + (r + sigma**2/2)*tau)/(sigma*np.sqrt(tau))
+    d2 = d1 - sigma*np.sqrt(tau)
+    rho = K*tau*np.exp(-r*tau)*norm.cdf(d2, 0, 1)
+    return 0.01*rho    # 1% change in Interest rate.
+
+def black_scholes_put_rho(S, t, K, T, r):
+    "Calculate rho of a put option"
+    tau = T-t
+    d1 = (np.log(S/K) + (r + sigma**2/2)*tau)/(sigma*np.sqrt(tau))
+    d2 = d1 - sigma*np.sqrt(tau)
+    rho = -K*tau*np.exp(-r*tau)*norm.cdf(-d2, 0, 1)
+    return 0.01*rho
