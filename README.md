@@ -5,6 +5,8 @@ In this GitHub repository, you'll discover a collection of projects reflecting m
 Here are some of the files listed below with clickable links. For all the files visit [![View on GitHub](https://img.shields.io/badge/GitHub-View_on_GitHub-orange?logo=GitHub)](https://github.com/palluthapa/Financial-Maths)
 
 #### Content
+* mathfinance.py
+    - Library of all the functions created. [![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/mathfinance.py)
 * Portfolio Optimization | Risk Management
     - Calibrated Markowitz model to Market data and find the Optimal Portfolio and The Efficient Frontier. [![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Markowitz%20Model.ipynb)
     - Computed Optimal investment strategy for a Multi-period Portfolio Optimisation problem in discrete time.[![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Merton%20Problem.ipynb)
