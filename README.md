@@ -13,7 +13,7 @@ Here are some of the files listed below with clickable links. For all the files 
     - Implemented Wiener Construction of Brownian Motion and simulated SDE’s.
     - Simulated Delta hedging strategy in discrete time.
     - Retrieved Options data from financial APIs and performed analysis.
-    - Implied volatility calculations using various methods.[![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)]([https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Implied%20Volatility.ipynb](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Implied%20Volatility%20And%20Realised%20Volatility.ipynb))
+    - Implied volatility calculations using various methods.[![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Implied%20Volatility%20And%20Realised%20Volatility.ipynb)
     - VaR and Expected Shortfall (CVaR) using Historical, Parametric & Monte Carlo methods for Risk Assessment.[![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Value%20at%20Risk%20VaR%20and%20CVaR.ipynb)
 * Options Pricing Model
     - Built a Black-Scholes Options pricing model in C++ and Python. [![View on Github](https://img.shields.io/badge/C++-C++-blue?logo=C%2B%2B)](https://github.com/palluthapa/Cpp-For-Finance/blob/master/part2-blackscholes.cpp)
