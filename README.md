@@ -11,8 +11,7 @@ Here are some of the files listed below with clickable links. For all the files 
     - Calibrated Markowitz model to Market data and find the Optimal Portfolio and The Efficient Frontier. [![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Markowitz%20Model.ipynb)
     - Computed Optimal investment strategy for a Multi-period Portfolio Optimisation problem in discrete time.[![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Merton%20Problem.ipynb)
     - Implemented Wiener Construction of Brownian Motion.[![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Wiener%20Process.ipynb)
-    - Simulated SDE’s.[![View on Github](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Stochastic%20Differential%20Equations.ipynb)
-    
+    - Simulated SDE’s.[![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Stochastic%20Differential%20Equations.ipynb)
     - Simulated Delta hedging strategy in discrete time. [![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Simulating%20Delta%20Hedging%20Strategy%20in%20Discrete%20Time.ipynb)
     - Retrieved Options data from financial APIs and performed analysis.
     - Implied volatility calculations using various methods.[![View on Github](https://img.shields.io/badge/Github-Notebook-green?logo=Github)](https://github.com/palluthapa/Financial-Maths/blob/master/Codes/Implied%20Volatility%20And%20Realised%20Volatility.ipynb)
